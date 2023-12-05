@@ -20,7 +20,7 @@ const initializeDbAndServer = async () => {
       driver: sqlite3.Database,
     });
     app.listen(4000, () => {
-      console.log("Server Running Successfully at http://localhost:3001");
+      console.log("Server Running Successfully at http://localhost:4000");
     });
   } catch (e) {
     console.log(`Error ${e}`);
@@ -32,7 +32,7 @@ initializeDbAndServer();
 
 //API 1
 app.get("/home/", async (request, response) => {
-  const { search = "", page_no = 1, month } = request.query;
+  const { search = "", page_no = 1, month=3 } = request.query;
 
   limit = parseInt(page_no) * 10;
   offset = limit - 10;
@@ -64,7 +64,7 @@ app.get("/home/", async (request, response) => {
 
 //API 2
 app.get("/home/stats/", async (request, response) => {
-  const { month } = request.query;
+  const { month=3 } = request.query;
 
   const getSaleQuery = `
   SELECT SUM(price) as total_price
@@ -94,7 +94,7 @@ app.get("/home/stats/", async (request, response) => {
 
 //API 3
 app.get("/home/barchart/", async (request, response) => {
-  const { month } = request.query;
+  const { month=3 } = request.query;
   const getBarChartQuery1 = `
         SELECT
             COUNT() as total_items,
@@ -133,7 +133,7 @@ app.get("/home/barchart/", async (request, response) => {
 
 //API 4
 app.get("/home/piechart/", async (request, response) => {
-  const { month } = request.query;
+  const { month=3 } = request.query;
   const getPieChartQuery = `
   SELECT DISTINCT category,
   COUNT() as total_items
@@ -151,7 +151,7 @@ app.get("/home/piechart/", async (request, response) => {
 
 //API 5
 app.get("/home/response", async (request, response) => {
-  const { month } = request.query;
+  const { month=3 } = request.query;
 
   const getSaleQuery = `
   SELECT SUM(price) as total_price
