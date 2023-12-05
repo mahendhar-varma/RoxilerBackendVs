@@ -53,9 +53,9 @@ app.get("/home/", async (request, response) => {
       id: item.id,
       title: item.title,
       price: item.price,
-      description: item.description,
+      description: item.descriptions,
       category: item.category,
-      image: item.image,
+      image: item.images,
       dateOfSale: item.date_of_sale,
       sold: item.sold,
     }))
