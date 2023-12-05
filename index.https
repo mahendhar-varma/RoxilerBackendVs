@@ -1,0 +1,15 @@
+GET http://localhost:4000/home/?month=3&search=&page_no=1
+###
+
+
+
+GET http://localhost:4000/home/stats/?month=11
+###
+
+GET http://localhost:4000/home/barchart/?month=11
+###
+
+GET http://localhost:4000/home/piechart/?month=11
+###
+
+GET http://localhost:4000/home/response/?month=11
